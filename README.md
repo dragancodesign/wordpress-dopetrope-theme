@@ -4,6 +4,19 @@ WordPress theme base on free Dopetrope HTML5 theme
 Credits to HTML template creator
 https://html5up.net/
 
+* * * 
+GitHub COMMANDS IMPORTANT :
+This way is used when the repository is already created :
+✓ ✓ ✓ GitHub Steps in the beginning, one by one:
+1) git init
+git status
+2) git add .
+3) git remote add origin https://github.com/dragancodesign/wordpress-dopetrope-theme.git
+4) git commit -m "Initial commit"
+5) git branch -M main
+6) git push -u origin main
+* * * 
+
 1. Creating all theme .php files and css file: 
 Create: 
 index.php, 
@@ -68,3 +81,36 @@ add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
 9. Inside front-page.php add :
 <?php get_header(); ?> AT THE BEGINNING
 <?php get_footer(); ?> AT THE END
+
+10. From footer.php 
+We don't want: 
+jquery.min.js - because Wordpress provides us jquery file
+dropotron.min.js - because we don't want JavaScript to use this, we want CSS to do that
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+
+11. Inside functions.php file: 
+<?php 
+
+function wordpressdopetrope_scripts_enqueue(){
+
+    wp_enqueue_style('style', get_stylesheet_uri());
+    wp_enqueue__script('jquery');
+    wp_enqueue__script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
+    wp_enqueue__script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
+    wp_enqueue__script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
+    wp_enqueue__script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
+}
+add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
+
+WE STILL HAVE SOME ERRORS BUT FOR NOW WE WILL IGNORE images ERRORS and be concentrated only on JavaScript file path errors !
+
+12. Fixing console errors for missing js files
+a) from footer.php delete unused js links
+b) from main.js delete Dropdowns code section:
+	// Dropdowns.
+		$('#nav > ul').dropotron({
+			mode: 'fade',
+			noOpenerFade: true,
+			alignment: 'center'
+		});
