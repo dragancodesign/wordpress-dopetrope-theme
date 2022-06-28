@@ -1,0 +1,23 @@
+
+Theme Handbook
+
+Main Stylesheet (style.css)
+https://developer.wordpress.org/themes/basics/main-stylesheet-style-css
+
+Adding Multiple Theme Support 
+https://developer.wordpress.org/reference/functions/add_theme_support/
+custom-logo - Allows us to upload logo from Wordpress Dashboard
+title-tag - Prints title tag automatically into header 
+post-thumbnails - Allows us to add feature thumbnails on our post
+add_image_size - Helps to add custom image size 
+Automatic Feed links is a theme feature introduced with version 3.0. 
+This feature adds RSS feed links to HTML <head>
+
+Browse: Home / Reference / Functions / register_nav_menus() 
+https://developer.wordpress.org/reference/functions/register_nav_menus/
+ 
+Browse: Home / Reference / Functions / body_class() 
+https://developer.wordpress.org/reference/functions/body_class/
+
+ 
+

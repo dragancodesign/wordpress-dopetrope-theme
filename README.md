@@ -117,7 +117,7 @@ b) from main.js delete Dropdowns code section:
 13. Adding Multiple Theme Support 
 https://developer.wordpress.org/reference/functions/add_theme_support/
 Inside functions.php:
-<?php 
+
 function wordpressdopetrope_theme_setup(){
     add_theme_support('custom-logo');
     add_theme_support('title-tag');
@@ -144,6 +144,9 @@ add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
 
 14. Adding body_class function to header.php file
 Source, read the documentation:
+ Browse: Home / Reference / Functions / register_nav_menus() 
 https://developer.wordpress.org/reference/functions/register_nav_menus/
+ Browse: Home / Reference / Functions / body_class() 
 https://developer.wordpress.org/reference/functions/body_class/
 
+https://developer.wordpress.org/reference/functions/get_bloginfo/

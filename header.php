@@ -7,21 +7,29 @@
 <html>
 
 <head>
-    <title>Dopetrope by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
     <!-- ADDED LINK TO HEAD LINKS -->
     <?php wp_head(); ?>
+    
 </head>
 
-<!-- <body class="homepage is-preload"> MAKE IT DYNAMIC !!! -->
-<body <?php body_class('homepage is-preload') ?>>
+<!-- <body class="homepage is-preload">  -->
+    <!-- MAKE IT DYNAMIC !!! -->
+<body <?php body_class('homepage is-preload'); ?>>
     <div id="page-wrapper">
 
     <!-- Header -->
         <section id="header">
 
             <!-- Logo -->
+                <?php
+                    $site_title = get_bloginfo( 'name' );
+                    $site_url = network_site_url( '/' );
+                    $site_description = get_bloginfo( 'description' );
+                ?>
+
                 <h1><a href="index.html">Dopetrope</a></h1>
 
             <!-- Nav -->

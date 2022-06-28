@@ -1,5 +1,7 @@
 <?php 
-
+// echo get_stylesheet_uri();
+// echo get_template_directory_uri();
+// exit();
 function wordpressdopetrope_theme_setup(){
 
     add_theme_support('custom-logo');
@@ -17,11 +19,12 @@ add_action('after_setup_theme', 'wordpressdopetrope_theme_setup');
 
 function wordpressdopetrope_scripts_enqueue(){
 
-    wp_enqueue_style('style', get_stylesheet_uri());
-    wp_enqueue__script('jquery');
-    wp_enqueue__script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
-    wp_enqueue__script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
-    wp_enqueue__script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
-    wp_enqueue__script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
+    // wp_enqueue_style('style', get_stylesheet_uri());
+    wp_enqueue_style( 'style', get_stylesheet_uri() );
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
+    wp_enqueue_script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
+    wp_enqueue_script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
+    wp_enqueue_script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
