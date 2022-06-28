@@ -90,7 +90,6 @@ dropotron.min.js - because we don't want JavaScript to use this, we want CSS to 
 <script src="assets/js/jquery.dropotron.min.js"></script>
 
 11. Inside functions.php file: 
-<?php 
 
 function wordpressdopetrope_scripts_enqueue(){
 
@@ -142,7 +141,6 @@ function wordpressdopetrope_scripts_enqueue(){
     wp_enqueue__script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
-
 
 14. Adding body_class function to header.php file
 Source, read the documentation:
