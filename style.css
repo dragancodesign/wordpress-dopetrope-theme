@@ -2116,6 +2116,19 @@ input, select, textarea {
 				#nav > ul > li > ul {
 					display: none;
 				}
+				/* For the 2nd level of sub-menu, change display: none TO block !!! */
+				#nav > ul > li:hover > .sub-menu {
+					display: block;
+				}
+				/* For the another level of sub-menu */
+				#nav > ul > li:hover > .sub-menu .sub-menu {
+					display: none;
+				}
+				
+				/* For the next level of sub-menu */
+				#nav > ul > .sub-menu li:hover > .sub-menu {
+					display: block;
+				}
 
 				#nav > ul > li > a {
 					border-radius: 5px;
@@ -2133,13 +2146,13 @@ input, select, textarea {
 					background: #f3f3f3;
 				}
 
-				#nav > ul > li.current > a {
+				#nav > ul > li.current-menu-item > a {
 					background: #d52349;
 					color: #fff !important;
 					font-weight: 700;
 				}
 
-	.dropotron {
+	.sub-menu {
 		border-radius: 5px;
 		background-color: #252122;
 		background-color: rgba(34, 30, 31, 0.98);
@@ -2148,12 +2161,16 @@ input, select, textarea {
 		min-width: 13em;
 		box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
 		text-align: left;
-		margin-top: -1.25em;
-		margin-left: -1px;
+		/*margin-top: -1.25em; WE DON'T WANT THIS ANY MORE !
+		margin-left: -1px; */
 		list-style: none;
+		/* ADD DOWN NEW STYLES TO MAKE IT BETTER : */
+		position: absolute;
+		top: 100%;
+		left: 50%;
 	}
 
-		.dropotron a, .dropotron span {
+		.sub-menu a, .sub-menu span {
 			color: #aaa;
 			text-decoration: none;
 			-moz-transition: color .25s ease-in-out;
@@ -2162,19 +2179,19 @@ input, select, textarea {
 			transition: color .25s ease-in-out;
 		}
 
-		.dropotron li {
+		.sub-menu li {
 			padding: 0.25em 0 0.25em 0;
 		}
 
-			.dropotron li:hover > a, .dropotron li:hover > span {
+			.sub-menu li:hover > a, .sub-menu li:hover > span {
 				color: #fff;
 			}
 
-		.dropotron.level-0 {
+		.sub-menu.sub-menu {
 			margin-top: 2em;
 		}
 
-			.dropotron.level-0:before {
+			.sub-menu:before {
 				content: '';
 				display: block;
 				position: absolute;

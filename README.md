@@ -179,3 +179,132 @@ Put inside the header.php:
                     ?> 
                 < /nav>
 
+17. Styling the Menu and Sub-menu 
+Wordpress adds to each menu item the class "current-menu-item" and other classes also.
+In our style.css we have class inside the #nav current and we change this to: "current-menu-item"
+Press: Ctrl+Shift+R together to do hard refresh and it will show the changes !!!
+The correct code now looks like this: 
+#nav > ul > li.current-menu-item > a {
+    background: #d52349;
+    color: #fff !important;
+    font-weight: 700;
+}
+
+To see the submenu items with class="sub-menu" we have to change all "dropotron" classes to "sub-menu" - The first class .sub-menu was .dropetop
+.sub-menu {
+    border-radius: 5px;
+    background-color: #252122;
+    background-color: rgba(34, 30, 31, 0.98);
+    padding: 1.25em 1.5em 1.25em 1.5em;
+    font-style: italic;
+    min-width: 13em;
+    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    margin-top: -1.25em;
+    margin-left: -1px;
+    list-style: none;
+}
+
+Duplicate the first #nav and add li:hover into the second
+
+#nav > ul > li > ul {
+    display: none;
+}
+/* For the 2nd level of sub-menu, change display: none TO block !!! */
+#nav > ul > li:hover > .sub-menu {
+    display: block;
+}
+/* For the another level of sub-menu */
+#nav > ul > li:hover > .sub-menu .sub-menu {
+    display: none;
+}
+
+/* For the next level of sub-menu */
+#nav > ul > .sub-menu li:hover > .sub-menu {
+    display: block;
+}
+
+NOW IT IS POPPING UP AND WE HAVE TO CHANGE sub-menu style:
+.sub-menu {
+    border-radius: 5px;
+    background-color: #252122;
+    background-color: rgba(34, 30, 31, 0.98);
+    padding: 1.25em 1.5em 1.25em 1.5em;
+    font-style: italic;
+    min-width: 13em;
+    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    /*margin-top: -1.25em; WE DON'T WANT THIS ANY MORE !
+    margin-left: -1px; */
+    list-style: none;
+    /* ADD DOWN NEW STYLES TO MAKE IT BETTER : */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+}
+
+18. Removing unwanted section from footer.php: 
+Inside < div class="row"> In footer.php delete col-8 & col-4  < /div>  
+
+19. Registering Main Sidebar Widget in functions.php file
+function wordpressdopetrope_widgets_init(){
+
+    register_sidebar(array(
+        'name' => __('Main Sidebar', 'wordpressdopetrope'),
+        'id' => 'main-sidebar',
+        'description' => 'Primary Right Sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>'
+    ));
+}
+add_action('widgets_init', 'wordpressdopetrope_widgets_init');
+
+20. Registering 3 Footer Widgets and the WHOLE CODE from No. 19-Sidebar Widget WITH 3 FOOTER WIDGETS :
+
+function wordpressdopetrope_widgets_init(){
+
+    register_sidebar(array(
+        'name' => __('Main Sidebar', 'wordpressdopetrope'),
+        'id' => 'main-sidebar',
+        'description' => 'Primary Right Sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Widget 1', 'wordpressdopetrope'),
+        'id' => 'footer-widget-1',
+        'description' => 'Footer Widget 1',
+        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Widget 2', 'wordpressdopetrope'),
+        'id' => 'footer-widget-2',
+        'description' => 'Footer Widget 2',
+        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Widget 3', 'wordpressdopetrope'),
+        'id' => 'footer-widget-3',
+        'description' => 'Footer Widget 3',
+        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>'
+    ));
+
+}
+add_action('widgets_init', 'wordpressdopetrope_widgets_init');
+

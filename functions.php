@@ -18,7 +18,7 @@ add_action('after_setup_theme', 'wordpressdopetrope_theme_setup');
 
 
 function wordpressdopetrope_scripts_enqueue(){
-
+    
     // wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_style( 'style', get_stylesheet_uri() );
     wp_enqueue_script('jquery');
@@ -28,3 +28,49 @@ function wordpressdopetrope_scripts_enqueue(){
     wp_enqueue_script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
+
+
+function wordpressdopetrope_widgets_init(){
+
+    register_sidebar(array(
+        'name' => __('Main Sidebar', 'wordpressdopetrope'),
+        'id' => 'main-sidebar',
+        'description' => 'Primary Right Sidebar',
+        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</aside>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Widget 1', 'wordpressdopetrope'),
+        'id' => 'footer-widget-1',
+        'description' => 'Footer Widget 1',
+        'before_widget' => '<section id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</section>',
+        'before_title' => '<header><h2 class="widget-title">',
+        'after_title' => '</h2></header>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Widget 2', 'wordpressdopetrope'),
+        'id' => 'footer-widget-2',
+        'description' => 'Footer Widget 2',
+        'before_widget' => '<section id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</section>',
+        'before_title' => '<header><h2 class="widget-title">',
+        'after_title' => '</h2></header>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer Widget 3', 'wordpressdopetrope'),
+        'id' => 'footer-widget-3',
+        'description' => 'Footer Widget 3',
+        'before_widget' => '<section id="%1$s" class="widget %2%s" >',
+        'after_widget' => '</section>',
+        'before_title' => '<header><h2 class="widget-title">',
+        'after_title' => '</h2></header>'
+    ));
+
+}
+add_action('widgets_init', 'wordpressdopetrope_widgets_init');
