@@ -15,8 +15,6 @@
     
 </head>
 
-<!-- <body class="homepage is-preload">  -->
-    <!-- MAKE IT DYNAMIC !!! -->
 <body <?php body_class('homepage is-preload'); ?>>
     <div id="page-wrapper">
 
@@ -24,40 +22,26 @@
         <section id="header">
 
             <!-- Logo -->
+            <!-- Logo code works perfectly !!! -->
+            <?php /*the_custom_logo(); */ ?>
                 <?php
                     $site_title = get_bloginfo( 'name' );
                     $site_url = network_site_url( '/' );
                     $site_description = get_bloginfo( 'description' );
                 ?>
 
-                <h1><a href="index.html">Dopetrope</a></h1>
+                <h1><a href="<?php echo $site_url; ?>"><?php echo $site_title; ?></a></h1>
+                <small><?php echo $site_description; ?></small>
 
             <!-- Nav -->
                 <nav id="nav">
-                    <ul>
-                        <li class="current"><a href="index.html">Home</a></li>
-                        <li>
-                            <a href="#">Dropdown</a>
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor</a></li>
-                                <li><a href="#">Magna phasellus</a></li>
-                                <li><a href="#">Etiam dolore nisl</a></li>
-                                <li>
-                                    <a href="#">Phasellus consequat</a>
-                                    <ul>
-                                        <li><a href="#">Magna phasellus</a></li>
-                                        <li><a href="#">Etiam dolore nisl</a></li>
-                                        <li><a href="#">Veroeros feugiat</a></li>
-                                        <li><a href="#">Nisl sed aliquam</a></li>
-                                        <li><a href="#">Dolore adipiscing</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Veroeros feugiat</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                        <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                        <li><a href="no-sidebar.html">No Sidebar</a></li>
-                    </ul>
+                    <?php 
+                        wp_nav_menu( 
+                            array(
+                                'theme_location' => 'primary',
+                                'container' => ''
+                            )
+                        );
+                    ?> 
                 </nav>
         </section>

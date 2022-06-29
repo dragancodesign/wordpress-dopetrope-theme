@@ -38,7 +38,7 @@ It is much better create your own theme from the scratch.
 
 3. Adjusting the static .html template to fit our theme layout 
 - Cut Intro section from Header section and paste it inside Main section, 
-before pasting, first create <div class="row"> and put the code inside </div>
+before pasting, first create < div class="row"> and put the code inside < /div>
 
 4. Setting theme information / description inside the style.css file. 
 WHAT TO PUT IN DESCRIPTION OF MY THEME ? - is here and this is the source how to create WP Themes:
@@ -69,7 +69,7 @@ export it as .png file and put it inside the theme folder.
 6. Moving static to header, footer, front-page.php, and css to style.css
 
 7. wp_head & wp_footer functions
-Here he goes to header.php and delete old path to href="assets/css/main.css" and puts the new php command, just before closing </head> tag : <?php wp_head(); ?> , and to the footer.php and puts <?php wp_footer(); ?> just before closing </body> tag in order to load these two files !
+Here he goes to header.php and delete old path to href="assets/css/main.css" and puts the new php command, just before closing < /head> tag : <?php wp_head(); ?> , and to the footer.php and puts <?php wp_footer(); ?> just before closing < /body> tag in order to load these two files !
 
 8. Inside functions.php :
 <?php 
@@ -86,19 +86,20 @@ add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
 We don't want: 
 jquery.min.js - because Wordpress provides us jquery file
 dropotron.min.js - because we don't want JavaScript to use this, we want CSS to do that
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.dropotron.min.js"></script>
+< script src="assets/js/jquery.min.js">< /script>
+
+< script src="assets/js/jquery.dropotron.min.js">< /script>
 
 11. Inside functions.php file: 
 
 function wordpressdopetrope_scripts_enqueue(){
 
     wp_enqueue_style('style', get_stylesheet_uri());
-    wp_enqueue__script('jquery');
-    wp_enqueue__script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
-    wp_enqueue__script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
-    wp_enqueue__script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
-    wp_enqueue__script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
+    wp_enqueue_script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
+    wp_enqueue_script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
+    wp_enqueue_script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
 
@@ -134,11 +135,11 @@ add_action('after_setup_theme', 'wordpressdopetrope_theme_setup');
 function wordpressdopetrope_scripts_enqueue(){
 
     wp_enqueue_style('style', get_stylesheet_uri());
-    wp_enqueue__script('jquery');
-    wp_enqueue__script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
-    wp_enqueue__script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
-    wp_enqueue__script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
-    wp_enqueue__script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('wordpressdopetrope-browser', get_template_directory_uri(). 'assets/js/browser.min.js');
+    wp_enqueue_script('wordpressdopetrope-breakpoints', get_template_directory_uri(). 'assets/js/breakpoints.min.js');
+    wp_enqueue_script('wordpressdopetrope-util', get_template_directory_uri(). 'assets/js/util.js');
+    wp_enqueue_script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
 
@@ -150,3 +151,31 @@ https://developer.wordpress.org/reference/functions/register_nav_menus/
 https://developer.wordpress.org/reference/functions/body_class/
 
 https://developer.wordpress.org/reference/functions/get_bloginfo/
+
+15. Video 23: Displaying the WebSite Logo Uploaded via Dashboard
+ADDING THE CUSTOM LOGO TO THE WebSite:
+    <?php the_custom_logo(); ?>
+TO COMMENT THE php script inside the .html PUT THE  /*  .....  */ around the code:
+    <!-- Logo -->
+                <?php /*the_custom_logo(); */ ?>
+                <?php the_custom_logo(); ?>
+
+16. Video 24: Making the Navigation Menu Items Dynamic 
+Instead of hard coded navigation menu create Wordpress dynamic items. 
+
+Inside the header.php remove all code between the < nav> and < /nav> tags. And use the Wordpress array method, using the menu id from - functions.php :
+    register_nav_menus( array( 'primary' => __('Primary Menu', 'mythemename') )); 
+
+Put inside the header.php:
+            <!-- Nav -->
+                < nav id="nav">
+                    < ?php 
+                        wp_nav_menu( 
+                            array(
+                                'theme_location' => 'primary',
+                                'container' => ''
+                            )
+                        );
+                    ?> 
+                < /nav>
+

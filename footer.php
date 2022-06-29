@@ -130,7 +130,7 @@
 			</div>
 </section>
 <!-- THIS div MIGHT HAVE TO DELETE !!! -->
-<!-- </div> -->
+</div>
 
 <!-- Scripts -->
 
