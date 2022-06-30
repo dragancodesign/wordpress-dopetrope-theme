@@ -247,21 +247,9 @@ NOW IT IS POPPING UP AND WE HAVE TO CHANGE sub-menu style:
 Inside < div class="row"> In footer.php delete col-8 & col-4  < /div>  
 
 19. Registering Main Sidebar Widget in functions.php file
-function wordpressdopetrope_widgets_init(){
+IMPLEMENTED DOWN IN No. 20 !!!
 
-    register_sidebar(array(
-        'name' => __('Main Sidebar', 'wordpressdopetrope'),
-        'id' => 'main-sidebar',
-        'description' => 'Primary Right Sidebar',
-        'before_widget' => '<aside id="%1$s" class="widget %2%s" >',
-        'after_widget' => '</aside>',
-        'before_title' => '<h2 class="widget-title">',
-        'after_title' => '</h2>'
-    ));
-}
-add_action('widgets_init', 'wordpressdopetrope_widgets_init');
-
-20. Registering 3 Footer Widgets and the WHOLE CODE from No. 19-Sidebar Widget WITH 3 FOOTER WIDGETS :
+20. Registering 3 Footer WIDGETS and the WHOLE CODE from No. 19-Sidebar WIDGETS together WITH 3 FOOTER WIDGETS CODE :
 
 function wordpressdopetrope_widgets_init(){
 
@@ -307,4 +295,54 @@ function wordpressdopetrope_widgets_init(){
 
 }
 add_action('widgets_init', 'wordpressdopetrope_widgets_init');
+
+21. Fetching POSTS from Wordpress Dashboard with WP_Query VIDEO 30: 
+From front-page.php inside the section Blog remove: 
+< div class="col-6 col-12-small">
+        < section class="box">
+... only one of the two sections with class="box" 
+
+Browse: Home / Reference / Classes / WP_Query TO READ ABOUT EXTESIBILITY of WP_Query:
+https://developer.wordpress.org/reference/classes/wp_query/
+WP_query is a standard loop and is taking some arguments, but these arguments can be very extensive. 
+
+Added PHP code for blog posts to appear : 
+
+<?php
+    $blog_arguments = array(
+        'post_type' => 'post',
+        'posts_per_page' => 2
+    );
+    $posts = new WP_query($blog_arguments);
+    while($posts -> have_posts()){
+        $posts->the_post();
+?>
+
+
+22. Creating Posts from Dashboard
+THIS IS NOT CHECKED YET UNTIL I FINISH THE NEXT VIDEO No. 32
+
+23. Display Post information for each Post - VIDEO No. 32
+INSIDE front-page.php to display Featured Post Images Thumbnails ADD: 
+
+<div class="col-6 col-12-small">
+    <section class="box">
+        <a href="<?php the_permalink(); ?>" class="image featured">
+            <?php the_post_thumbnail('home-featured'); ?>
+        </a>
+        <header>
+            <h3><?php the_title(); ?></h3>
+            <p>Posted on <?php the_date(); ?> at <?php the_time(); ?></p>
+        </header>
+
+        <?php the_excerpt(); ?>
+        
+        <footer>
+            <ul class="actions">
+                <li><a href="<?php the_permalink(); ?>" class="button icon solid fa-file-alt">Continue Reading</a></li>
+                <li><a href="<?php comments_link(); ?>" class="button alt icon solid fa-comment">"<?php echo get_commets_number(); ?>" comments</a></li>
+            </ul>
+        </footer>
+    </section>
+</div>
 

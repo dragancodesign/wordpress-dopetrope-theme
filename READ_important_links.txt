@@ -19,5 +19,6 @@ https://developer.wordpress.org/reference/functions/register_nav_menus/
 Browse: Home / Reference / Functions / body_class() 
 https://developer.wordpress.org/reference/functions/body_class/
 
- 
-
+Browse: Home / Reference / Classes / WP_Query 
+https://developer.wordpress.org/reference/classes/wp_query/
+WP_query is a standard loop and is taking some arguments, but these arguments can be very extensive. 
