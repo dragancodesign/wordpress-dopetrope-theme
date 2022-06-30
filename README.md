@@ -325,24 +325,24 @@ THIS IS NOT CHECKED YET UNTIL I FINISH THE NEXT VIDEO No. 32
 23. Display Post information for each Post - VIDEO No. 32
 INSIDE front-page.php to display Featured Post Images Thumbnails ADD: 
 
-<div class="col-6 col-12-small">
-    <section class="box">
-        <a href="<?php the_permalink(); ?>" class="image featured">
-            <?php the_post_thumbnail('home-featured'); ?>
-        </a>
-        <header>
-            <h3><?php the_title(); ?></h3>
-            <p>Posted on <?php the_date(); ?> at <?php the_time(); ?></p>
-        </header>
+< div class="col-6 col-12-small">
+    < section class="box">
+        < a href="<?php the_permalink(); ?>" class="image featured">
+            < ?php the_post_thumbnail('home-featured'); ?>
+        < /a>
+        < header>
+            < h3><?php the_title(); ?>< /h3>
+            < p>Posted on <?php the_date(); ?> at <?php the_time(); ?>< /p>
+        < /header>
 
-        <?php the_excerpt(); ?>
+        < ?php the_excerpt(); ?>
         
-        <footer>
+        < footer>
             <ul class="actions">
                 <li><a href="<?php the_permalink(); ?>" class="button icon solid fa-file-alt">Continue Reading</a></li>
                 <li><a href="<?php comments_link(); ?>" class="button alt icon solid fa-comment">"<?php echo get_commets_number(); ?>" comments</a></li>
             </ul>
-        </footer>
-    </section>
-</div>
+        < /footer>
+    < /section>
+< /div>
 
