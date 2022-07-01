@@ -16,7 +16,6 @@ function wordpressdopetrope_theme_setup(){
 }
 add_action('after_setup_theme', 'wordpressdopetrope_theme_setup');
 
-
 function wordpressdopetrope_scripts_enqueue(){
     
     // wp_enqueue_style('style', get_stylesheet_uri());
@@ -28,7 +27,6 @@ function wordpressdopetrope_scripts_enqueue(){
     wp_enqueue_script('wordpressdopetrope-main', get_template_directory_uri(). 'assets/js/main.js');
 }
 add_action('wp_enqueue_scripts', 'wordpressdopetrope_scripts_enqueue');
-
 
 function wordpressdopetrope_widgets_init(){
 
@@ -74,3 +72,6 @@ function wordpressdopetrope_widgets_init(){
 
 }
 add_action('widgets_init', 'wordpressdopetrope_widgets_init');
+
+// Adding Portfolio Custom Post Type
+require get_template_directory().'/includes/portfolio.php';

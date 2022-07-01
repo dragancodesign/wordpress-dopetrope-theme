@@ -22,3 +22,7 @@ https://developer.wordpress.org/reference/functions/body_class/
 Browse: Home / Reference / Classes / WP_Query 
 https://developer.wordpress.org/reference/classes/wp_query/
 WP_query is a standard loop and is taking some arguments, but these arguments can be very extensive. 
+
+https://www.wp-hasty.com/tools/wordpress-custom-post-type-generator/
+Hasty is the best way to generate custom code for your WordPress project easily and fast.
+There are many generators for WordPress, but Hasty really saves you time. Don’t believe it? Then try out a WP generator from Hasty, wheter it’s the shortcode generator, the custom-post-type generator or the Meta Box Generator, you're going to speed up your development time with just a few clicks.

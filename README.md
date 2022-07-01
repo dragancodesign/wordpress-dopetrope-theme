@@ -325,24 +325,46 @@ THIS IS NOT CHECKED YET UNTIL I FINISH THE NEXT VIDEO No. 32
 23. Display Post information for each Post - VIDEO No. 32
 INSIDE front-page.php to display Featured Post Images Thumbnails ADD: 
 
-< div class="col-6 col-12-small">
-    < section class="box">
-        < a href="<?php the_permalink(); ?>" class="image featured">
+<div class="col-6 col-12-small">
+    <section class="box">
+        <a href="<?php the_permalink(); ?>" class="image featured">
             < ?php the_post_thumbnail('home-featured'); ?>
-        < /a>
-        < header>
-            < h3><?php the_title(); ?>< /h3>
-            < p>Posted on <?php the_date(); ?> at <?php the_time(); ?>< /p>
-        < /header>
-
-        < ?php the_excerpt(); ?>
-        
-        < footer>
+        </a>
+        <header>
+            <h3><?php the_title(); ?>< /h3>
+            <p>Posted on <?php the_date(); ?> at <?php the_time(); ?>< /p>
+        </header>
+        <?php the_excerpt(); ?>
+        <footer>
             <ul class="actions">
                 <li><a href="<?php the_permalink(); ?>" class="button icon solid fa-file-alt">Continue Reading</a></li>
-                <li><a href="<?php comments_link(); ?>" class="button alt icon solid fa-comment">"<?php echo get_commets_number(); ?>" comments</a></li>
+                <li><a href="<?php comments_link(); ?>" class="button alt icon solid fa-comment"> <?php echo get_comments_number(); ?>" comments</a></li>
             </ul>
-        < /footer>
-    < /section>
-< /div>
+        </footer>
+    </section>
+</div>
+
+24. Creating Custom Post Type
+Go to:
+https://www.wp-hasty.com/tools/wordpress-custom-post-type-generator/
+Hasty is the best way to generate custom code for your WordPress project easily and fast.
+
+1) In Generators WordPress Custom Post Type Generator, in the above link start selecting the type you want.
+When generating use for Text Domain: wordpressdopetrope that we have in our style.css file, 
+and if it is for Portfolio posts use:  
+Post Type Name (Singular): Portfolio, 
+Post Type Name (Plural): Portfolios, 
+Post Type Key: portfolio, 
+Text-Domain: wordpressdopetrope
+
+THEN PRESS: Copy code, from the bottom of the page 
+
+2) Inside Theme folder create create: includes/portfolio.php and PASTE the code generated from: wp-hasty.com
+Add <?php at the beginning of the document to make it .php file !!!
+
+Paste the code generated from wp-hasty.com
+
+3) Inside functions.php add the description:
+// Adding Portfolio Custom Post Type
+require get_template_directory().'/includes/portfolio.php';
 
