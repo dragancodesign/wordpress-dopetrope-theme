@@ -36,7 +36,7 @@ function create_portfolio_cpt() {
 		'description' => __( '', 'wordpressdopetrope' ),
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-nametag',
-		'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'author'),
+		'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'author', 'custom-fields'),
 		'taxonomies' => array(),
 		'public' => true,
 		'show_ui' => true,

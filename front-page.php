@@ -2,11 +2,12 @@
 
 <!-- Banner -->
 <section id="banner">
-        <header>
-            <h2>Howdy. This is Dopetrope Theme Customized</h2>
-            <p>A responsive theme Customized</p>
-        </header>
-    </section>
+    <header>
+        <h2><?php the_field('fp_hero_title'); ?></h2>
+        <p><?php the_field('fp_hero_subtitle'); ?></p>
+        <img src="<?php the_field('fp_hero_image'); ?>" style="width: 100%; hight: 50vh;" alt="" />
+    </header>
+</section>
 
 <!-- Main -->
 <div class="row" style="background-color: white;">
@@ -55,97 +56,48 @@
                 <div class="col-12">
 
                     <!-- Portfolio -->
-                        <section>
-                            <header class="major">
-                                <h2>My Portfolio</h2>
-                            </header>
-                            <div class="row">
-                                <div class="col-4 col-6-medium col-12-small">
-                                    <section class="box">
-                                        <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-                                        <header>
-                                            <h3>Ipsum feugiat et dolor</h3>
-                                        </header>
-                                        <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                        <footer>
-                                            <ul class="actions">
-                                                <li><a href="#" class="button alt">Find out more</a></li>
-                                            </ul>
-                                        </footer>
-                                    </section>
-                                </div>
-                                <div class="col-4 col-6-medium col-12-small">
-                                    <section class="box">
-                                        <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-                                        <header>
-                                            <h3>Sed etiam lorem nulla</h3>
-                                        </header>
-                                        <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                        <footer>
-                                            <ul class="actions">
-                                                <li><a href="#" class="button alt">Find out more</a></li>
-                                            </ul>
-                                        </footer>
-                                    </section>
-                                </div>
-                                <div class="col-4 col-6-medium col-12-small">
-                                    <section class="box">
-                                        <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-                                        <header>
-                                            <h3>Consequat et tempus</h3>
-                                        </header>
-                                        <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                        <footer>
-                                            <ul class="actions">
-                                                <li><a href="#" class="button alt">Find out more</a></li>
-                                            </ul>
-                                        </footer>
-                                    </section>
-                                </div>
-                                <div class="col-4 col-6-medium col-12-small">
-                                    <section class="box">
-                                        <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-                                        <header>
-                                            <h3>Blandit sed adipiscing</h3>
-                                        </header>
-                                        <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                        <footer>
-                                            <ul class="actions">
-                                                <li><a href="#" class="button alt">Find out more</a></li>
-                                            </ul>
-                                        </footer>
-                                    </section>
-                                </div>
-                                <div class="col-4 col-6-medium col-12-small">
-                                    <section class="box">
-                                        <a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
-                                        <header>
-                                            <h3>Etiam nisl consequat</h3>
-                                        </header>
-                                        <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                        <footer>
-                                            <ul class="actions">
-                                                <li><a href="#" class="button alt">Find out more</a></li>
-                                            </ul>
-                                        </footer>
-                                    </section>
-                                </div>
-                                <div class="col-4 col-6-medium col-12-small">
-                                    <section class="box">
-                                        <a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
-                                        <header>
-                                            <h3>Dolore nisl feugiat</h3>
-                                        </header>
-                                        <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-                                        <footer>
-                                            <ul class="actions">
-                                                <li><a href="#" class="button alt">Find out more</a></li>
-                                            </ul>
-                                        </footer>
-                                    </section>
-                                </div>
-                            </div>
-                        </section>
+            <section>
+                <header class="major">
+                    <h2>Our Portfolio</h2>
+                </header>
+                <div class="row">
+
+                <?php
+                    $portfolio_arguments = array(
+                        'post_type' => 'portfolio',
+                        'posts_per_page' => 6
+                    );
+                    $portfolios = new WP_query($portfolio_arguments);
+                    while($portfolios -> have_posts()){
+                        $portfolios->the_post();
+                ?>
+        
+                <div class="col-4 col-6-medium col-12-small">
+                <section class="box">
+                    <a href="<?php the_permalink(); ?>" class="image featured">
+                        <?php the_post_thumbnail('home-featured'); ?>
+                    </a>
+                    <header>
+                        <h3><?php the_title(); ?></h3>
+                    </header>
+                <?php the_excerpt(); ?>
+                    <footer>
+                        <ul class="actions">
+                            <li>
+                                <a href="<?php the_permalink(); ?>" class="button alt">Find out more</a>
+                            </li>
+                        </ul>
+                    </footer>
+                </section>
+                </div>
+
+                <!-- Down closing php while loop -->
+                <?php } ?>
+
+                <?php wp_reset_postdata(); ?>
+
+                    </div>
+                </section>
 
                 </div>
                 <div class="col-12">

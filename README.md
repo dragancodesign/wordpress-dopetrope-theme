@@ -368,3 +368,104 @@ Paste the code generated from wp-hasty.com
 // Adding Portfolio Custom Post Type
 require get_template_directory().'/includes/portfolio.php';
 
+NOW GO TO front-page.php 
+Delete all existing Portfolios HTML code except of the one for the sample to write our own code !  
+To achieve this we will copy everything that we have done with the Blog post code and apply some changes !!!
+
+ <!-- Portfolio -->
+<section>
+    <header class="major">
+        <h2>Our Portfolio</h2>
+    </header>
+    <div class="row">
+
+    <?php
+        $portfolio_arguments = array(
+            'post_type' => 'portfolio',
+            'posts_per_page' => 6
+        );
+        $portfolios = new WP_query($portfolio_arguments);
+        while($portfolios -> have_posts()){
+            $portfolios->the_post();
+    ?>
+        
+<div class="col-4 col-6-medium col-12-small">
+<section class="box">
+    <a href="<?php the_permalink(); ?>" class="image featured">
+        <?php the_post_thumbnail('home-featured'); ?>
+    </a>
+    <header>
+        <h3><?php the_title(); ?></h3>
+    </header>
+<?php the_excerpt(); ?>
+    <footer>
+        <ul class="actions">
+            <li>
+                <a href="<?php the_permalink(); ?>" class="button alt">Find out more</a>
+            </li>
+        </ul>
+    </footer>
+</section>
+</div>
+
+<!-- Down closing php while loop -->
+<?php } ?>
+
+<?php wp_reset_postdata(); ?>
+
+    </div>
+</section>
+
+
+
+25. Making Hero Section Dynamic with Custom Fields
+
+That what we have done in previous examples, is creating and applying Widget approach, but now we will use another method !!!
+To install plugin, search: "ACF" : Advanced Custom Fields from Delicious Brains to add Custom Fields to a Page, Blog Post to wherever we want !
+
+Adding Custom Field to our Front Page Hero section.
+Custom Fields -> Add New (Field Group) -> FP Hero Section -> Add
+FP Hero Section
+    FP Hero Title
+    FP Hero Subtitle
+    FP Hero Image -> Image -> Image URL => Now make sure you select: Image URL !!!
+    & finally -> PUBLISH
+We can choose many CHOICES from TYPES of FIELDS to be : 
+Basic:
+Text, Text Area, Number, Range, Email, URL, Image, Wysiwyg Editor ....
+Content:
+Choice:
+Relational:
+jQuery:
+Layout:
+
+Here we have 2 fields where we want to assign values dynamically. 
+In customization process we will choose the Rules : 
+Rules
+Create a set of rules to determine which edit screens will use these advanced custom fields
+Show this field group if (inside the settings)
+
+-> Page Type (-> is equal to ->) Front Page 
+    => DOES NOT SHOW Advanced Custom Fields Options on the bottom !!!
+    => NOW SHOWS ! ! ! 
+
+-> Page Template (-> is equal to ->) Page Template => HERE WE CHOOSE THIS -> IMPORTANT !!!
+
+AND PUBLISH THIS FILED, so it will appear when we are adding new Page !
+<!-- Banner -->
+<section id="banner">
+    <header>
+        <h2>Howdy. This is Dopetrope Theme Customized</h2>
+CHANGE TO: 
+        <h2><?php the_field('fp_hero_title'); ?></h2>
+AND: ( not working ! )
+        <p>A responsive theme Customized</p>
+CHANGE TO: ( not working ! )
+        <p><?php the_field('fp_hero_subtitle'); ?></p>
+CREATE : 
+
+        <img src="<?php the_field('fp_hero_image'); ?>" style="width: 100%; hight: 50vh;" alt="">
+    </header>
+</section>
+
+$fp_hero_image = get_field('fp_hero_image');
