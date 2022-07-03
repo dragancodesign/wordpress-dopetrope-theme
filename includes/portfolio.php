@@ -56,3 +56,15 @@ function create_portfolio_cpt() {
 
 }
 add_action( 'init', 'create_portfolio_cpt', 0 );
+
+// Adding taxonomy
+function register_portfolio_taxonomy(){
+    $args = array(
+        'public'=>true,
+        'label'=>'Portfolio type',
+        'rewrite'=>false,
+        'supports'=>array('title','editor','author','thumbnail','excerpt')
+    );
+    register_taxonomy('portfolio_type', 'portfolio', $args); //adds this custom taxonomy to our custom post type portfolio
+}
+add_action('init', 'register_portfolio_taxonomy');
