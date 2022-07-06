@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
 <section id="main">
-<div class="container">
-    <div class="row">
-        <div class="col-8 col-12-medium">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 col-12-medium">
             <?php 
                 if(have_posts()){
                     while(have_posts()){
@@ -23,12 +23,12 @@
                   <?php }
                 }
             ?>
-            
-        </div>
-        <?php get_sidebar(); ?>
+                
+            </div>
+            <?php get_sidebar(); ?>
 
+        </div>
     </div>
-</div>
 </section>
 
 <?php get_footer(): ?>

@@ -10,6 +10,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
+    <?php get_template_directory_uri() . '/js/easing/jquery.easing.1.3.js' ?>
+
     <!-- ADDED LINK TO HEAD LINKS -->
     <?php wp_head(); ?>
     

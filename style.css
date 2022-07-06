@@ -1504,9 +1504,9 @@ input, select, textarea {
 		color: #555 !important;
 	}
 
-	form :-ms-input-placeholder {
+	/* form :-ms-input-placeholder {
 		color: #555 !important;
-	}
+	} */
 
 	form ::-moz-focus-inner {
 		border: 0;
@@ -2232,10 +2232,10 @@ input, select, textarea {
 			}
 
 			#banner header p {
-				color: #d52349;
+				color: white;
 				padding: 0;
 				font-style: normal;
-				margin: 0;
+				/* margin: 0; */
 				font-size: 1.5em;
 			}
 
